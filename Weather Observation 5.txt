@@ -1,0 +1,23 @@
+select city, (length(city))
+from station
+where length(city) = 
+    (select min(length(city)) a
+     from station
+     group by city
+     order by a asc
+     LIMIT 1
+    )
+group by city
+LIMIT 1;
+
+select city, (length(city))
+from station
+where length(city) = 
+    (select max(length(city)) a
+     from station
+     group by city
+     order by a desc
+     LIMIT 1
+    )
+group by city
+LIMIT 1;
